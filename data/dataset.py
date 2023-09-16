@@ -17,7 +17,7 @@ def is_image_file(filename):
 
 def make_dataset(dir):
     if os.path.isfile(dir):
-        images = [i for i in np.genfromtxt(dir, dtype=np.str, encoding='utf-8')]
+        images = [i for i in np.genfromtxt(dir, dtype=np.str_, encoding='utf-8')]
     else:
         images = []
         assert os.path.isdir(dir), '%s is not a valid directory' % dir
@@ -160,7 +160,7 @@ class ColorizationDataset(data.Dataset):
 
     def __getitem__(self, index):
         ret = {}
-        file_name = str(self.flist[index]).zfill(5) + '.png'
+        file_name = str(self.flist[index]).zfill(5) + '.jpg'
 
         img = self.tfs(self.loader('{}/{}/{}'.format(self.data_root, 'color', file_name)))
         cond_image = self.tfs(self.loader('{}/{}/{}'.format(self.data_root, 'gray', file_name)))

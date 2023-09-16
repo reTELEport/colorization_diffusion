@@ -76,7 +76,7 @@ if __name__ == '__main__':
     opt = Praser.parse(args)
     
     ''' cuda devices '''
-    gpu_str = ','.join(str(x) for x in opt['gpu_ids'])
+    gpu_str = ''#','.join(str(x) for x in opt['gpu_ids'])
     os.environ['CUDA_VISIBLE_DEVICES'] = gpu_str
     print('export CUDA_VISIBLE_DEVICES={}'.format(gpu_str))
 
